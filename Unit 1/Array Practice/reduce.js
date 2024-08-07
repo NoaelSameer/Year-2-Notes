@@ -8001,18 +8001,9 @@ const people = [
     },
   ];
 
-  // console.log(people.every((person) => {
-  //   return (10 < person.age && person.age < 25);
-  // }));
 
-
-  // .some
-
-  console.log(people.some((person) => {
-    const {pet} = person;
-      return (pet === "bird") ? "This person has a bird as a pet." : "No bird found.";
-    }));
-
-  // console.log(people.every((person) => ))
-
-// hamster
+  let avg = people.reduce((sum, nxt) => {
+    const { age } = nxt;
+    return sum + age;
+  }, 0) / people.length; 
+  console.log(avg); 
