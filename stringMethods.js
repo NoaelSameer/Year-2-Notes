@@ -209,7 +209,7 @@ function getFullNames(users){
 // console.log(getFullNames(inputData))
 
 
-// This function makes a new array, and makes the variable emails into email providers by doing the index of (@) and finding the index of @, and then it 
+// This function makes a new array, and makes the variable emails into email providers by doing the index of (@) and finding the index of @, and then it removes it, while also then checking it with the list, to see if its already inside of the list. IF not, then it adds it to the list, if it is in the list then it does nothing. 
 function getEmailProviders(users) {
     let newArray = []
     const emails = users.map(user => user.email.substring(user.email.indexOf("@") + 1))
@@ -220,5 +220,40 @@ function getEmailProviders(users) {
 }
 
 
-console.log(getEmailProviders(inputData))
+// console.log(getEmailProviders(inputData))
 
+// THis function makes the variables Males and Females, and then it maps it by  the gender, if it is male it adds one and if it false it adds one to the female, and then it puts it into a dictionary.
+function countGender(users) {
+    var males = 0
+    var females = 0
+    let genderCount = inputData.map((user) =>{
+        let gender = user.gender
+        gender == 'Male'? males++ : females++
+    })
+    return {males: males, females: females}
+}
+
+// console.log(countGender(inputData))
+// This removes each period, and then joins it together since it creates spaces, it does it for starter, ender, and the iip address (while also making it into a variable and a number) THen, it checks to see if its between start and end, and if it then it returns it, otherwise it just does nothing.
+function filterIPByRange(users, start, end){
+    let starter = Number(start.split(".").join("")), ender = Number(end.split(".").join(""));
+     let answer = users.filter(user => {
+        var ip_addresses = Number(user.ip_address.split(".").join(""))
+        if(ip_addresses > starter && ip_addresses < ender){
+            return user
+        }
+    })
+    return answer
+
+    // return users.map()
+
+}
+
+// console.log(filterIPByRange(inputData, '1.0.54480', "19255432.16"))
+
+function getFullNamesWithInitials(users){
+    return(`${users.first_name} ${users.last_name} (${users.first_name[0]}${users.last_name[0]})`)
+
+}
+
+console.log(getFullNamesWithInitials(inputData))
