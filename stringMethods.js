@@ -251,9 +251,14 @@ function filterIPByRange(users, start, end){
 
 // console.log(filterIPByRange(inputData, '1.0.54480', "19255432.16"))
 
-function getFullNamesWithInitials(users){
-    return(`${users.first_name} ${users.last_name} (${users.first_name[0]}${users.last_name[0]})`)
-
+// This function maps out all of names by first and last name, and then uses a string literal to also print out the initials.
+function getFullNamesWithInitials(users) {
+    return users.map(user => {
+        var firstName = user.first_name || 'unknown';
+        var lastName = user.last_name || 'unknown';
+        return `${firstName} ${lastName} (${firstName[0]}${lastName[0]})`;
+    });
 }
+
 
 console.log(getFullNamesWithInitials(inputData))
