@@ -1,0 +1,1 @@
+let names = ["sven", "Bobby", "Ronald", "Lopez", "Ignacio", "Armondo", "Stephan"]

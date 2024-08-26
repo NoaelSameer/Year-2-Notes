@@ -1,0 +1,1 @@
+require names from './globals'
